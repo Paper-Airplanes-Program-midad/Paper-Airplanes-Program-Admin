@@ -1,0 +1,16 @@
+{
+  "title": "Diagnostic Exam",
+  "intro": "This test is divided into three parts: reading, writing and listening. You have up to one hour to complete it, with each part lasting about 20–25 minutes. Please do your best to complete all sections. If you don't know an answer, make your best guess. Do not use a dictionary or ask someone for help — this is how we pair you with the most suitable teacher and make sure your lessons are neither too easy nor too difficult.",
+  "reading": {
+    "title": "Reading",
+    "intro": "Read the letter below by Thao Nelson, a college lecturer at the Business School, University of Indiana. After you have finished reading, answer the questions which follow about vocabulary and comprehension."
+  },
+  "writing": {
+    "title": "Writing",
+    "intro": "Please read the writing prompt below. You should spend 15 minutes on this section."
+  },
+  "listening": {
+    "title": "Listening",
+    "intro": "Listen to the video below on what makes a hero and answer the questions."
+  }
+}
