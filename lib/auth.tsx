@@ -21,7 +21,7 @@ export type SessionUser = {
 };
 
 export const DEMO_EMAIL = portal.user.email;
-export const DEMO_PASSWORD = "demo1234";
+export const DEMO_PASSWORD = "midad@2026";
 
 export type SignInResult = { ok: true } | { ok: false; error: "credentials" | "server" };
 
