@@ -25,6 +25,8 @@ export type Session = {
   joinUrl: string;
   studentName?: string;
   tutorName?: string;
+  studentId?: string;
+  tutorId?: string;
   semester?: string;
   scheduleId?: string;
   makeup?: boolean;
@@ -38,6 +40,8 @@ export type Schedule = {
   semester: string;
   studentName: string;
   tutorName: string;
+  studentId: string;
+  tutorId: string;
   startDate: string;
   time: string;
   timezone: string;
@@ -73,6 +77,7 @@ export type Assignment = {
   score: number | null;
   feedback: string | null;
   studentName: string;
+  studentId: string;
   seen: boolean;
   answer?: string | null;
   submittedUtc?: string | null;
@@ -90,6 +95,8 @@ export type CheckIn = {
   by: "student" | "tutor";
   studentName: string;
   tutorName: string;
+  studentId: string;
+  tutorId: string;
   held: boolean;
   minutes: number | null;
   reason: string | null;
@@ -131,6 +138,8 @@ export type Pair = {
   attendanceRate: number;
   health: "good" | "watch" | "at_risk";
   ungraded: number;
+  studentId: string;
+  tutorId: string;
 };
 
 export type Incident = {
@@ -142,6 +151,7 @@ export type Incident = {
   status: "open" | "investigating" | "resolved";
   createdUtc: string;
   summary: L;
+  reportedBy?: string;
 };
 
 export type TutorProfile = {

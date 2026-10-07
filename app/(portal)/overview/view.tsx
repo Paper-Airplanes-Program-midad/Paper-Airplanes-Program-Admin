@@ -36,9 +36,9 @@ export function OverviewView() {
   const { pairs, incidents } = data;
   const attendanceTrend = data.analytics.attendanceTrend;
 
-  const avg = Math.round(
-    pairs.reduce((total, pair) => total + pair.attendanceRate, 0) / pairs.length,
-  );
+  const avg = pairs.length
+    ? Math.round(pairs.reduce((total, pair) => total + pair.attendanceRate, 0) / pairs.length)
+    : 0;
   const open = incidents.filter((i) => i.status !== "resolved").length;
 
   return (

@@ -19,7 +19,8 @@
     "menu": "Menu",
     "close": "Close menu",
     "lessons": "Lessons",
-    "accounts": "Accounts"
+    "accounts": "Accounts",
+    "pairs": "Pairing"
   },
   "notif": {
     "title": "Notifications",
@@ -520,5 +521,25 @@
     "until": "until",
     "nosessions": "No sessions this week",
     "forstudent": "For the student"
+  },
+  "pairs": {
+    "title": "Pairing",
+    "subtitle": "Link each student with their teacher",
+    "students": "Students",
+    "count": "with a teacher",
+    "onlyopen": "Only students without a teacher",
+    "none": "No teacher yet",
+    "assign": "Assign teacher",
+    "change": "Change",
+    "teacher": "Teacher",
+    "teacherhint": "The number in brackets is how many students the teacher already has.",
+    "remove": "Remove teacher",
+    "assigned": "Teacher assigned",
+    "updated": "Pairing updated",
+    "removed": "Teacher removed",
+    "changehint": "The previous teacher's upcoming sessions with this student will be removed, and the new teacher sets a new schedule. Past sessions stay in the history.",
+    "changeconfirm": "Change this student's teacher? The previous teacher's upcoming sessions with this student will be removed.",
+    "removeconfirm": "Remove this student's teacher? Their upcoming sessions will be removed.",
+    "noteachers": "There are no active teachers yet. Approve a teacher in Accounts first."
   }
 }

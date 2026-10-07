@@ -214,9 +214,13 @@ function WeeklyForms({ data, onSaved }: { data: Attendance; onSaved: () => void 
   const [picked, setPicked] = useState<number | null>(null);
   const week = picked ?? semester.currentWeek;
 
+  // Old demo rows that never belonged to an account carry a name but no id.
+  const keyOf = (row: { studentId?: string; studentName?: string }) =>
+    row.studentId || row.studentName || "";
+
   const sessionsOf = (student: string) =>
     sessions
-      .filter((session) => session.week === week && session.studentName === student)
+      .filter((session) => session.week === week && keyOf(session) === student)
       .sort((a, b) => a.startUtc.localeCompare(b.startUtc));
   const joined = (session: Session, by: CheckIn["by"]) => {
     const first = session.joins?.find((entry) => entry.by === by);
@@ -225,10 +229,12 @@ function WeeklyForms({ data, onSaved }: { data: Attendance; onSaved: () => void 
 
   const rows = checkins.filter((row) => row.week === week);
   const find = (student: string, by: CheckIn["by"]) =>
-    rows.find((row) => row.studentName === student && row.by === by);
+    rows.find((row) => keyOf(row) === student && row.by === by);
 
-  const people = new Map(pairs.map((pair) => [pair.student, pair.tutor]));
-  for (const row of rows) if (!people.has(row.studentName)) people.set(row.studentName, row.tutorName);
+  const people = new Map(pairs.map((pair) => [pair.studentId, `${pair.student} · ${pair.tutor}`]));
+  for (const row of rows) {
+    if (!people.has(keyOf(row))) people.set(keyOf(row), `${row.studentName} · ${row.tutorName}`);
+  }
   const complete = [...people.keys()].filter(
     (student) => find(student, "student") && find(student, "tutor"),
   ).length;
@@ -257,7 +263,7 @@ function WeeklyForms({ data, onSaved }: { data: Attendance; onSaved: () => void 
           </p>
 
           <ul className="mt-5 flex flex-col gap-3">
-            {[...people].map(([student, tutor]) => {
+            {[...people].map(([student, label]) => {
               const fromStudent = find(student, "student");
               const fromTutor = find(student, "tutor");
               const differ =
@@ -268,9 +274,7 @@ function WeeklyForms({ data, onSaved }: { data: Attendance; onSaved: () => void 
               return (
                 <li key={student} className="row p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="min-w-0 truncate text-[13.5px] font-bold text-fg">
-                      {student} · {tutor}
-                    </p>
+                    <p className="min-w-0 truncate text-[13.5px] font-bold text-fg">{label}</p>
                     {differ && <StatusPill tone="warning">{t("att.mismatch")}</StatusPill>}
                   </div>
                   <ul className="mt-2 flex flex-col gap-1.5">

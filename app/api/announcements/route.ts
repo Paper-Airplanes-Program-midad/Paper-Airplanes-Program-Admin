@@ -29,9 +29,9 @@ async function recipientsOf(audience: string): Promise<string[]> {
   const students = active.filter((user) => user.role === "student");
   if (audience === "at_risk") {
     const flagged = new Set(
-      pairs.filter((pair) => pair.health === "at_risk").map((pair) => pair.student),
+      pairs.filter((pair) => pair.health === "at_risk").map((pair) => pair.studentId),
     );
-    return students.filter((user) => flagged.has(user.name)).map((user) => user.id);
+    return students.filter((user) => flagged.has(user.id)).map((user) => user.id);
   }
   return students.map((user) => user.id);
 }
